@@ -1,0 +1,101 @@
+Assessment 2
+1.	Python theory questions
+
+What is the program?
+•	A program is a set of instructions being performed in order.
+
+What is the process?
+•	The process is the running of a program.
+
+What is Cache?
+•	Cache is hardware or software that is used for temporary memory.
+
+What is Thread and Multithreading?
+•	Thread and multithreading are forms of execution within a process. Multithreading is when several tasks are happening at the same time.
+
+What is GIL in Python and how does it work?
+•	Global Interpreter lock
+
+What is Concurrency and Parallelism and what are the differences?
+•	Concurrency and parallelism are both the running of computations.  Parallelism is when two computations are running side by side but concurrency is when only one task is running.
+
+What do these stand for in programming: DRY, KISS, BDUF
+DRY – Don’t repeat yourself
+KISS – Keep it Simple, Stupid
+BDUF – Big Data Up Front
+
+What is Garbage collector? How does it work?
+•	The garage collector is an automatic memory management system. It manages the collection and release of memory.
+
+What are ‘deadlock’ and ‘livelock’ in a relational database?
+•	Deadlock is when a database is locked and the data on it cannot be changed.
+•	Livelock is when someone is working on a database and no else can access it until they are not on it and they have released the lock.
+
+What is Flask and what can we use it for?
+•	Flask is an interface used for connecting an API to a database.
+
+2. Discuss the difference between python 2 and 3
+Python 2 is no longer supported whereas python3 is.
+Python 3 returns an exact result when dividing whereas python2 was rounded.
+Python 3 has the print() function and python 2 does not.
+Python 2 has ASCII and Python 3 uses Unicode.
+
+3. Write a function that can define whether a word is a Palindrome or not (a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam) .
+def is_palindrome(word):
+    return word == word[::-1]
+print(is_palindrome('hannah'))
+
+4. Write tests for the newly created Palindrome function. Provide a brief explanation for your test case options.
+from unittest import TestCase, main
+
+class TestIsPalindrome(TestCase):
+    def test_if_word_is_palindrome_true(self):
+        result = is_palindrome('otto')
+        self.assertTrue(result)
+
+    def test_if_word_is_palindrome_false(self):
+        result = is_palindrome('margot')
+        self.assertFalse(result)
+
+
+The reason I chose these testcase options was because they were the most straight forward to me and the tests ran smoothly.
+
+5. Agile methodology
+Product backlog – a list created of tasks to do throughout the sprint.
+Sprint planning – a meeting that everyone involved in the sprint has to attend and everyone knows what the end objective is by the end of it.
+Daily scrum – daily meeting where the team talks about their plan for the day and any blockers they might have. They each talk about what they did yesterday and what they are going to do today.
+Sprint review – the product is looked at by everyone involved including the customer and stake holders.
+Sprint retrospective – everyone looks back over the sprint and discusses what went well, what didn’t go well and what could be improved next time.
+
+6. Exception handling in Python, explain what each of the following blocks means in the program flow:
+Try – this code is run and if it was successful the program will then go to the else part of the program. If not successful and exception will be raised and it will go to except.
+Except – this will be run if the try part of the code was not successful and an exception was raised.
+Else- this part of the code will be run if the try part was successful.
+Finally – this part of the program happens no matter what has happened in the previous parts.
+
+7. How can we connect a Python program (process) with a database? Explain how it works and how do we fetch / insert data into DB tables from a python program.
+We can connect a python process to a database with an API. It works by connecting the two with a connector and then it links with a SQL host then username and password is needed.
+
+Python needs to link to various URLs to access the databases. From here you are then able to fetch and update them.
+
+8. Given two SQL tables below: authors and books.
+● The authors dataset has 1M+ rows
+● The books dataset also has 1M+ rows
+Create an SQL query that shows the TOP 3 authors who sold the most books in total!
+
+SELECT DISTINCT(author_name), SUM(sold_copies)
+FROM authors a
+JOIN books b
+ON a.book_name = b.book_name
+GROUP BY author_name
+HAVING SUM(sold_copies)
+ORDER BY SUM(sold_copies)desc;
+
+
+
+
+
+
+
+
+
